@@ -12,7 +12,7 @@
  * Plugin Name:       Gravity Forms add-on: SharpSpring Forms
  * Plugin URI:        https://github.com/Fulcrum-Creatives/gravityforms-sharpspring-forms
  * Description:       Plugin Description
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            Fulcrum Creatives
  * Author URI:        http://fulcrumcreatives.com
  * License:           GPL-2.0+
@@ -27,25 +27,13 @@ if ( !defined( 'WPINC' ) ) { die; }
 if ( class_exists( 'GFForms' ) ) {
   GFForms::include_addon_framework();
   class GFSharpSpringForms extends GFAddOn {
-    protected $_version = '1.0'; 
+    protected $_version = '1.0.1'; 
     protected $_min_gravityforms_version = '1.9';
     protected $_slug = 'sharpspring_forms';
     protected $_path = 'gravityforms-sharpspring-forms/gravityforms-sharpspring-forms.php';
     protected $_full_path = __FILE__;
     protected $_title = 'Gravity Forms add-on: SharpSpring Forms';
     protected $_short_title = 'SharpSpring Forms';
-
-    /**
-     * Admin Init
-     *
-     * @uses   init_admin()
-     * @since  1.0.0
-     * @return void
-     */
-    public function init_admin() {
-      parent::init_admin();
-      $this->form_settings_fields($form);
-    }
 
     /**
      * Frontend init
