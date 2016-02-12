@@ -12,7 +12,7 @@
  * Plugin Name:       Gravity Forms add-on: SharpSpring Forms
  * Plugin URI:        https://github.com/Fulcrum-Creatives/gravityforms-sharpspring-forms
  * Description:       Plugin Description
- * Version:           1.0.1
+ * Version:           1.0.2
  * Author:            Fulcrum Creatives
  * Author URI:        http://fulcrumcreatives.com
  * License:           GPL-2.0+
@@ -87,8 +87,8 @@ if ( class_exists( 'GFForms' ) ) {
     public function add_ss_tracking($form_string, $form) {
       $settings = $this->get_form_settings($form);
       $form_id  = $form['id'];
-      $tracking = $settings["sharpspring_form_tracking_code"];
-      if( !empty($tracking) ) {
+      $tracking = (isset($settings["sharpspring_form_tracking_code"]) ) ? $settings["sharpspring_form_tracking_code"] : '';
+      if (!empty($tracking) || $tracking != '') {
         $escaped = htmlentities(str_replace( array( "__ss_noform.push(['endpoint', '", "']);"), array('start', 'end'), $tracking));
         preg_match_all('!https?://\S+!', $escaped, $tracking_url);
         $tracking_url = str_replace("end", "", $tracking_url[0]);
